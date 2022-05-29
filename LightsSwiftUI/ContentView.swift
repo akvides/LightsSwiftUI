@@ -22,40 +22,43 @@ struct ContentView: View {
     @State private var yellowLight = LightIndicator(color: .yellow)
     @State private var greenLight = LightIndicator(color: .green)
     
+    private var light: some View {
+        ZStack{
+            Color(.black)
+            VStack{
+                redLight
+                yellowLight
+                greenLight
+            }
+        }
+        .frame(width: 130, height: 350)
+        .cornerRadius(16)
+    }
+    
+    private var button: some View {
+        Button {
+            changeColor()
+        } label:  {
+            Text(buttonTitle)
+                .font(.title)
+                .foregroundColor(.black)
+                .padding(.horizontal, 80.0)
+                .padding(.vertical, 15.0)
+        }
+        .background(.cyan)
+        .cornerRadius(16)
+        .padding(.bottom, 16)
+    }
+    
     var body: some View {
         ZStack{
             Color(.gray)
                 .ignoresSafeArea()
             VStack{
-                ZStack{
-                    Color(.black)
-                    VStack{
-                        redLight
-                        yellowLight
-                        greenLight
-                    }
-                }
-                .frame(width: 130, height: 350)
-                .cornerRadius(16)
-                
+                light
                 Spacer()
-
-                Button {
-                    changeColor()
-                } label:  {
-                    Text(buttonTitle)
-                        .font(.title)
-                        .foregroundColor(.black)
-                        .padding(.horizontal, 80.0)
-                        .padding(.vertical, 15.0)
-                        
-                }
-                .background(.cyan)
-                .cornerRadius(16)
-                .padding(.bottom, 16)
-
+                button
             }
-            
         }
     }
     
@@ -82,8 +85,6 @@ struct ContentView: View {
         
     }
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

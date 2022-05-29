@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LightIndicator: View {
-    let color: Color
     
+    let color: Color
     var state = false
     
     var body: some View {
@@ -32,10 +32,6 @@ struct LightIndicator: View {
                 )
                 .frame(width: 100, height: 100)
         }
-            
-            
-        
-
     }
 }
 
